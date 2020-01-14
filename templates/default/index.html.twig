@@ -86,7 +86,7 @@
                                 <span>{{ skill.label }}</span>
                             {% endfor %}
                         </p>
-                        <a href="#" class="btn btn-dark">
+                        <a href="{{ path('doctor_show', {'id': doctor.id}) }}" class="btn btn-dark">
                             <i class="fa fa-eye"></i>
                             Plus d'informations
                         </a>
