@@ -14,6 +14,7 @@ class DoctorFixtures extends Fixture implements DependentFixtureInterface
 
         $jack = new Doctor();
         $jack->setFirstname("Jack");
+
         $jack->setLastname("Smith");
         $jack->setPhoto("doctor-1.jpg");
         $jack->setDescription("Lorem ipsum...");

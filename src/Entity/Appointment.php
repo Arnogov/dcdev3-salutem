@@ -1,11 +1,13 @@
 <?php
 
+
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AppointmentRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Appointment
 {
@@ -61,6 +63,11 @@ class Appointment
      * @ORM\ManyToOne(targetEntity="App\Entity\Doctor", inversedBy="appointments")
      */
     private $doctor;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
 
     public function getId(): ?int
     {
@@ -173,5 +180,25 @@ class Appointment
         $this->doctor = $doctor;
 
         return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->setCreatedAt(new \DateTime());
     }
 }
