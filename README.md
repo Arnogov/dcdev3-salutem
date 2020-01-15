@@ -17,7 +17,7 @@ php bin/console doctrine:migrations:migrate
 Générer les fixtures :
 
 ```shell
-php bin/console doctrine:migrations:migrate
+php bin/console doctrine:fixtures:load
 ```
 
 Puis mettre les images dynamiques dans le dossier public/uploads
