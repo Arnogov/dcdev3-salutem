@@ -4,6 +4,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AppointmentRepository")
@@ -30,6 +31,7 @@ class Appointment
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email(message="Email non valide")
      */
     private $email;
 
@@ -40,6 +42,7 @@ class Appointment
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\GreaterThan("today", message="La date doit être supérieure à {{ compared_value }}")
      */
     private $date;
 
